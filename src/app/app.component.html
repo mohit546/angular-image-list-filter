@@ -1,6 +1,28 @@
-<button *ngFor="let filter of listOfFilters" (click)="updateFilter(filter)">{{filter}}</button>
-<button (click)="updateFilter('')">Clear Filter</button>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<div>
-  <img [src]="image.path" style="width: 300px;" *ngFor="let image of imageList | imageFilter: 'category' : filter">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Image Filter</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  </div>
+</nav>
+
+<div class="container mt-3">
+  <div class="row">
+
+    <div class="col-sm-12 mb-3">
+      <button class="btn btn-success mr-2" *ngFor="let filter of listOfFilters" (click)="updateFilter(filter)">{{filter}}</button>
+      <button class="btn btn-success mr-2" (click)="updateFilter('')">Clear Filter</button>
+    </div>
+
+    <div class="col-sm-3" *ngFor="let image of imageList | imageFilter: 'category' : filter">
+      <img [src]="image.path" style="width: 100%; border: 10px solid #333; box-sizing: border-box; margin-bottom: 10px;">
+    </div>
+
+  </div>
 </div>
+
+

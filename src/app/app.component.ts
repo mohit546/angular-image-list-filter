@@ -26,17 +26,17 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.listOfFilters = this._generateFilterList(this.imageList);
+    this.listOfFilters = this._generateFilterList(this.imageList, 'category');
   }
 
   updateFilter(filter) {
     this.filter = filter;
   }
 
-  _generateFilterList(list) {
+  _generateFilterList(list, filterKey) {
     let filters = {};
     list.forEach(element => {
-      filters[element.category] = true;
+      filters[element[filterKey]] = true;
     });
     return Object.keys(filters);
   }
