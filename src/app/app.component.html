@@ -2,5 +2,5 @@
 <button (click)="updateFilter('')">Clear Filter</button>
 
 <div>
-  <img [src]="image.path" style="width: 300px;" *ngFor="let image of imageList | imageFilter: filter">
+  <img [src]="image.path" style="width: 300px;" *ngFor="let image of imageList | imageFilter: 'category' : filter">
 </div>

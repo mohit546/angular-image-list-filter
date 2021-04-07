@@ -5,17 +5,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ImageFilterPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    console.log(value, args);
-
+  transform(value: any, field?: string, query?: any): any {
     if(!value) return null;
-    if(!args) return value;
+    if(!query) return value;
 
-    args = args.toLowerCase();
+    query = query.toLowerCase();
 
 
     return value.filter(function(item){
-      return item.category.toLowerCase() === args;
+      if(!field) {
+        return JSON.stringify(item).toLowerCase().includes(query);
+      } else {
+        return item.category.toLowerCase() === query;
+      }
     });
   }
 
